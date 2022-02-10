@@ -28,10 +28,11 @@ and
 
 ## Files
 
-- [0-bubble_sort.c]()
-- []()
-- []()
-
+- [0-bubble_sort.c](https://github.com/Matilop15/sorting_algorithms/tree/main/0-bubble_sort)
+- [1-insertion_sort_list.c]()
+- [2-selection_sort.c]()
+- [3-quick_sort.c]()
 ## Authors
 [Linkedin: @Matias López](https://uy.linkedin.com/in/matias-l%C3%B3pez-777796194?trk=people-guest_people_search-card)
+
 [Linkedin: @Marco Sózaro](https://www.linkedin.com/in/marco-s%C3%B3zaro-76826364)
