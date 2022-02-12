@@ -26,20 +26,18 @@ void insertion_sort_list(listint_t **list)
 				(sig->prev)->next = sig->next;
 
 				if (sig->next != NULL)
-				{
-                			sig->next->prev = sig->prev;
-				}
+					sig->next->prev = sig->prev;
 
-			        (sig->prev)->prev = sig;
-			        sig->next = sig->prev;
-			        sig->prev = tmp;
+			(sig->prev)->prev = sig;
+			sig->next = sig->prev;
+			sig->prev = tmp;
 
-			        if (sig->prev != NULL)
-					sig->prev->next = sig;
-				else
-					*list = sig;
+			if (sig->prev != NULL)
+				sig->prev->next = sig;
+			else
+				*list = sig;
 
-				print_list(*list);
+			print_list(*list);
 			}
 		}
 	}
