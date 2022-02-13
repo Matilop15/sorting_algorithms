@@ -13,6 +13,9 @@ void insertion_sort_list(listint_t **list)
 	if (!list || !(*list))
 		return;
 
+	if (sizeof(list) < 2)
+		return;
+
 	for (actual = *list; actual != NULL; actual = actual->next)
 	{
 		while (actual->next != NULL && actual->n > actual->next->n)
