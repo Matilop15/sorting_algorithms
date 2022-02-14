@@ -8,36 +8,42 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *actual = NULL, *sig = NULL, *tmp = *list;
+	listint_t *actual = NULL, *ptr = NULL, *tmp = NULL;
 
 	if (!list || !(*list) || !(*list)->next)
 		return;
 
-	for (actual = *list; actual != NULL; actual = actual->next)
+	actual = (*list)->next;
+	while (actual != NULL)
 	{
-		while (actual->next != NULL && (actual->n > actual->next->n))
+		ptr = actual;
+		actual = actual->next; /*hasta el final de la lista*/
+		if (ptr->n < ptr->prev->n)
 		{
-			sig = actual->prev;
-
-			while (sig != NULL && sig->n < sig->prev->n)
+			tmp = ptr->prev;
+			while (tmp != NULL && tmp->n > ptr->n) /*empezamos a comparar*/
 			{
-				tmp = (sig->prev)->prev;
-
-				(sig->prev)->next = sig->next;
-
-				if (sig->next != NULL)
-					sig->next->prev = sig->prev;
-
-				(sig->prev)->prev = sig;
-				sig->next = sig->prev;
-				sig->prev = tmp;
-
-				if (sig->prev != NULL)
-					sig->prev->next = sig;
+				tmp->next = ptr->next;
+				if (ptr->next !=  NULL)
+					ptr->next->prev = ptr->prev;
+				if (tmp->prev == NULL) /*este es el nodo mas pequeño*/
+				{
+					ptr->prev = NULL;
+					ptr->next = tmp;
+					ptr->next->prev = ptr;
+					*list = ptr;
+					print_list(*list);
+					break;
+				}
 				else
-					*list = sig;
-
-				print_list(*list);
+				{
+					tmp->prev->next = ptr;
+					ptr->prev = tmp->prev;
+					tmp->prev = ptr;
+					ptr->next = tmp;
+					print_list(*list);
+				}
+				tmp = tmp->prev->prev;
 			}
 		}
 	}
