@@ -12,21 +12,22 @@ void shell_sort(int *array, size_t size)
 
 	if (!array || size < 2)
 		return;
+	/*create a knuth secuence */
 	while (gap < size / 3)
 		gap = gap * 3 + 1;
-
+	/* start with largest gap */
 	while (gap > 0)
 	{
 		for (iter = gap; iter < size; iter++)
-		{
+		{	/*save the element have be sorted*/
 			tmp = array[iter];
-
+			/*change the element in correct location*/
 			for (j = iter; j >= gap && array[j - gap] > tmp; j -= gap)
 				array[j] = array[j - gap];
-
+			/*paste tmp in correct location*/
 			array[j] = tmp;
 		}
-
+	/* decreasing the interval */
 	gap = gap / 3;
 	print_array(array, size);
 	}
